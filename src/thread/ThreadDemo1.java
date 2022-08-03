@@ -19,6 +19,12 @@ public class ThreadDemo1 {
 
     }
 }
+/**
+ *  继承线程并重写run方法的形式优点在于结构简单,利于使用匿名内部类形式创建.
+ *  缺点主要有两个:
+ *  1:由于java是单继承的,导致如果继承了Thread就不能再继承其它类了,这在实际开发时非常不方便.
+ *  2:在定义线程同时重写run方法来定义任务,这导致线程与任务存在必然的耦合关系,不利于线程的重用.
+ */
 class Mythread1 extends Thread{
     public void run(){
         for (int i = 0; i<1000;i++){
