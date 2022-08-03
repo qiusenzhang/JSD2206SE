@@ -21,9 +21,11 @@ public class Server {
     }
     public void start() {
         try {
-            System.out.println("等待客户端连接...");
-            Socket socket = serverSocket.accept();
-            System.out.println("一个客户端连接了！");
+            while (true) {
+                System.out.println("等待客户端连接...");
+                Socket socket = serverSocket.accept();
+                System.out.println("一个客户端连接了！");
+
             InputStream in = socket.getInputStream();
             InputStreamReader isr = new InputStreamReader(in, StandardCharsets.UTF_8);
             BufferedReader br = new BufferedReader(isr);
@@ -31,6 +33,7 @@ public class Server {
             while ((line = br.readLine())!=null) {
                 System.out.println("客户端说"+line);
             }
+        }
         } catch (IOException e) {
             e.printStackTrace();
         }
